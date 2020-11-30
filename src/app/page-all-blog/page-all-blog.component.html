@@ -1,7 +1,10 @@
-<p>page-all-blog works!</p>
+
+ <div class='flex-container'>
+    <p>Home</p>
+  </div>
 
 <div class='flex-container'>
-
+ 
 <div *ngFor='let blog of blogs' (click)="onSelect(blog)">
     <a routerLink='/blog-detial/{{blog.id}}'>  
       <app-card-blog [blog]="blog"></app-card-blog>

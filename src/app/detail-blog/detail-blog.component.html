@@ -3,7 +3,7 @@
         <h2>{{blog.header}}</h2>
         <p>{{blog.body}}</p>
     </div>
-    <div #elseBlock>
+    <div  *ngIf="blog === undefined">
         <p>loading...</p>
     </div>
 </div>

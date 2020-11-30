@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Blog} from '../blog';
 import {BlogService} from '../blog.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-detail-blog',
@@ -10,6 +12,7 @@ import {BlogService} from '../blog.service';
 })
 export class DetailBlogComponent implements OnInit {
 
+  blog$:Observable<Blog>;
   blog:Blog;
 
   constructor(private route: ActivatedRoute,private blogService: BlogService) { }
@@ -18,8 +21,10 @@ export class DetailBlogComponent implements OnInit {
     this.getBlog();
   }
 
-  async getBlog(){
+   getBlog(){
     const id = +this.route.snapshot.paramMap.get('id') as number;
-    (await this.blogService.getBlog(id)).subscribe(blog=>this.blog =blog);
+    this.blogService.getBlog(id).subscribe(
+      (getBlog)=> this.blog = getBlog
+    );
   }
 }

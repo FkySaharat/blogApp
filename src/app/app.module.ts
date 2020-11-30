@@ -13,12 +13,15 @@ import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import { DetailBlogComponent } from './detail-blog/detail-blog.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { MarkdownBlogComponent } from './markdown-blog/markdown-blog.component';
+import { PageAddBlogComponent } from './page-add-blog/page-add-blog.component';
 
 const appRoutes: Routes=[
   {path:'blog-all',component:PageAllBlogComponent},
   {path:'blog-my',component:PageMyBlogComponent},
   {path:'blog-this',component:PageThisBlogComponent},
   {path:'blog-detial/:id',component:DetailBlogComponent},
+  {path:'blog-adding',component:PageAddBlogComponent},
   {path: '', redirectTo: '/blog-all', pathMatch: 'full'},
   {path:'**', component:PageNotFoundComponent},
 ]
@@ -32,6 +35,8 @@ const appRoutes: Routes=[
     PageThisBlogComponent,
     CardBlogComponent,
     DetailBlogComponent,
+    MarkdownBlogComponent,
+    PageAddBlogComponent,
   ],
   imports: [
     BrowserModule,

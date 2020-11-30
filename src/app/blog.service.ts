@@ -6,6 +6,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Config } from './config';
 import { ConfigService } from './config.service';
+import { resolve } from 'url';
 
 
 @Injectable({
@@ -16,32 +17,37 @@ export class BlogService {
   configUrl: Config;
 
   constructor(private http: HttpClient, private configService: ConfigService) {
-    this.configService.getConfig().subscribe((data: Config) => this.configUrl = {
-      url: (data as any).baseUrl,
-    })
+    this.getConfig();
+  }
 
-    console.log(this.configUrl)
+  getConfig() {
+    this.configService.getConfig().subscribe((data: Config) =>
+      this.configUrl = {
+        url: (data as any).baseUrl,
+      })
+
+    console.log("Config", this.configUrl)
   }
 
 
-  async getBlog(id: number | string): Promise<Observable<Blog>> {
+
+    getBlog(id: number | string): Observable<Blog> {
 
     let blog: Blog;
+   
+ 
+    
 
-    // const blog= MOCKBLOGS.find((blog) =>
-    //   blog.id == id
-    // );
+    const url = `${this.configUrl.url}/blog/${id}`;
+    console.log('endtry point',url);
+    return this.http.get<Blog>(url) as Observable<Blog>
+    //  .subscribe((res) => {
+    //    console.log(res)
+    //   blog = res as Blog
+    // })
 
-
-    const url = `http://localhost:3000/blog/${id}`;
-    console.log(this.configUrl);
-    await this.http.get(`http://localhost:3000/blog/${id}`).subscribe((res) =>{
-    console.log('aaaaaaaaaaaaaa',res)  
-    blog = res as Blog
-    })
-
-    console.log("dfdfdfdddddd", blog);
-    return of(blog);
+    // console.log("after get blog", blog);
+    // return of(blog);
   }
 
   getBlogs(): Observable<Blog[]> {

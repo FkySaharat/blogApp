@@ -1,4 +1,4 @@
 <div>
     <textarea [placeholder]="placeHolder" (keyup)="onValueChange($event)"></textarea>
-    <div>{{compiled}}</div>
+    <div [innerHtml]="compiled">{{compiled}}</div>
 </div>

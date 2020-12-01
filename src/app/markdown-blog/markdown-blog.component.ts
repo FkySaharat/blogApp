@@ -10,15 +10,17 @@ export class MarkdownBlogComponent implements OnInit {
   @Input() placeHolder: string;
 
   @Output() valueChanged = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onValueChange(event){
-    console.log("change",event.target.value)
-    this.valueChanged.emit(event.target.value);
-    // const body = e.target.value;
+  public onValueChange(event){
+  const body = event.target.value;
+    console.log("child markdown",body)
+    this.valueChanged.emit(body);
+  
   
     // this.valueChanged.emit(body);
     // if(!body){

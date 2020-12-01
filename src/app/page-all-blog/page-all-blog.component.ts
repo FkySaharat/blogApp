@@ -25,6 +25,6 @@ export class PageAllBlogComponent implements OnInit {
   }
 
   getBlogs(){
-    this.blogService.getBlogs().subscribe(blogs => this.blogs = blogs);
+    this.blogService.getBlogs$().subscribe(blogs => this.blogs = blogs);
   }
 }

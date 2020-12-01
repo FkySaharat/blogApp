@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Blog} from '../blog';
 import {BlogService} from '../blog.service';
-import { Observable } from 'rxjs';
+import { observable, Observable } from 'rxjs';
+import { createBehaviorSubject } from 'src/lib/helpers/observable-helper';
 
 
 @Component({
@@ -12,19 +13,24 @@ import { Observable } from 'rxjs';
 })
 export class DetailBlogComponent implements OnInit {
 
-  blog$:Observable<Blog>;
-  blog:Blog;
+  blog$: Observable<Blog>;
+  blog: Blog;
 
   constructor(private route: ActivatedRoute,private blogService: BlogService) { }
 
   ngOnInit(): void {
     this.getBlog();
   }
-
-   getBlog(){
+  get loading() {
+    return createBehaviorSubject(this.blogService.loading$).value;
+  }
+  getBlog(){
     const id = +this.route.snapshot.paramMap.get('id') as number;
-    this.blogService.getBlog(id).subscribe(
-      (getBlog)=> this.blog = getBlog
-    );
+    this.blogService.loading$.next(false);
+    this.blogService.getBlog$(id).subscribe( (blog: Blog) => {
+      console.log('blog ', blog);
+      this.blog = blog;
+      this.blogService.loading$.next(true);
+    });
   }
 }

@@ -1,9 +1,9 @@
 <div class="detail-container">
-    <div *ngIf="blog !== undefined">
+    <div *ngIf="blog !== undefined || loading">
         <h2>{{blog.header}}</h2>
         <p>{{blog.body}}</p>
     </div>
-    <div  *ngIf="blog === undefined">
+    <div *ngIf="!loading" >
         <p>loading...</p>
     </div>
 </div>

@@ -1,0 +1,11 @@
+<div class='flex-container border-right border-left py-3'>
+
+  <div  *ngFor='let blog of blogs' (click)="onSelect(blog)">
+    <a routerLink='/blog-detial/{{blog.id}}'>
+      <app-card-blog [blog]="blog"></app-card-blog>
+    </a>
+
+  </div>
+
+
+</div>

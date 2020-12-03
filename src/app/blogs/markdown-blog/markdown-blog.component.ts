@@ -10,16 +10,17 @@ export class MarkdownBlogComponent implements OnInit {
   @Input() placeHolder: string;
 
   @Output() valueChanged = new EventEmitter<string>();
-
+  @Output() valueEnter = new EventEmitter<void>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
   public onValueChange(event){
-  const body = event.target.value;
+    const body = event.target.value;
     console.log("child markdown",body)
     this.valueChanged.emit(body);
+    
   
   
     // this.valueChanged.emit(body);
@@ -30,5 +31,10 @@ export class MarkdownBlogComponent implements OnInit {
     //   console.log("no change",body)
     //   this.valueChanged.emit(body);
     // }
+  }
+
+  public addEnter(event){
+    // console.log('add Enter')
+    // this.valueEnter.emit()
   }
 }

@@ -1,7 +1,13 @@
 .flex-container {
-    width: 90%;
+    position: relative;
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: auto;
+    height: 100%;
   }
+ 
+a {
+  text-decoration:none; 
+}

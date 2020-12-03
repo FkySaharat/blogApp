@@ -1,0 +1,5 @@
+<div id="addMd-container">
+    <textarea class="border-right"  [placeholder]="placeHolder" (keyup)="onValueChange($event)" (keydown.enter)="addEnter($event)"></textarea>
+    <div [innerHtml]="compiled" id="result">{{compiled}}</div>
+    <!-- <div >{{compiled}}</div> -->
+</div>

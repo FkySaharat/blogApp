@@ -17,6 +17,7 @@ export class PageAddBlogComponent implements OnInit {
   ngOnInit(): void {
     this.startingValue = this.getPlaceHolder();
     this.compiledMarkdown = this.compileMarkdown(this.startingValue);
+    console.log("this is add blog")
   }
 
   private getPlaceHolder(){
@@ -32,5 +33,11 @@ export class PageAddBlogComponent implements OnInit {
     this.startingValue = value;
     this.compiledMarkdown = this.compileMarkdown(value);
 
+  }
+
+  onValueAddNewLine(){
+ 
+    this.compiledMarkdown = this.compiledMarkdown + '<br>';
+    
   }
 }

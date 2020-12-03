@@ -8,9 +8,10 @@ import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 export class MarkdownBlogComponent implements OnInit {
   @Input() compiled: string;
   @Input() placeHolder: string;
-
+  
+ 
   @Output() valueChanged = new EventEmitter<string>();
-  @Output() valueEnter = new EventEmitter<void>();
+ 
   constructor() { }
 
   ngOnInit(): void {
@@ -21,20 +22,6 @@ export class MarkdownBlogComponent implements OnInit {
     console.log("child markdown",body)
     this.valueChanged.emit(body);
     
-  
-  
-    // this.valueChanged.emit(body);
-    // if(!body){
-    //   console.log("change",body)
-    //    this.valueChanged.emit(this.placeHolder);
-    // }else{
-    //   console.log("no change",body)
-    //   this.valueChanged.emit(body);
-    // }
   }
 
-  public addEnter(event){
-    // console.log('add Enter')
-    // this.valueEnter.emit()
-  }
 }

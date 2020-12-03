@@ -8,10 +8,22 @@ import { PageAddBlogComponent } from './page-add-blog/page-add-blog.component';
 import { PageDetailBlogComponent } from './page-detail-blog/detail-blog.component';
 
 const blogRoutes: Routes = [
-  {path:'blog-all',component:PageAllBlogComponent},
-  {path:'blog-my',component:PageMyBlogComponent},
-  {path:'blog-detial/:id',component:PageDetailBlogComponent},
-  {path:'blog-adding',component:PageAddBlogComponent},
+  {
+    path: 'blog',
+    children: [
+      { path: 'blogs-all', component: PageAllBlogComponent },
+      { path: 'blogs-my', component: PageMyBlogComponent },
+      {
+        path: 'blog-detial',
+        children: [
+          { path: ':id', component: PageDetailBlogComponent, }
+        ]
+      },
+      { path: 'blog-adding', component: PageAddBlogComponent },
+      { path: '**', redirectTo: 'blogs-all' }
+    ]
+  },
+
 ];
 
 @NgModule({

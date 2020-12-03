@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Blog } from '../blog';
 import { BlogService } from '../blog.service';
 import { Observable } from 'rxjs';
@@ -16,10 +16,12 @@ export class PageDetailBlogComponent implements OnInit {
   blog: Blog;
   status: string;
 
-  constructor(private route: ActivatedRoute, private blogService: BlogService) { }
+  //ActivedRoute provides access to infomation about a route ex. snapshot, params, url
+  constructor(private route: ActivatedRoute,private router: Router,private blogService: BlogService) { }
 
   ngOnInit(): void {
     this.getBlog();
+    console.log("Detail block")
   }
 
   async getBlog() {
@@ -37,5 +39,9 @@ export class PageDetailBlogComponent implements OnInit {
       }
 
     );
+  }
+
+  gotoblogs(){
+    this.router.navigate(['blog/blog-all'])
   }
 }

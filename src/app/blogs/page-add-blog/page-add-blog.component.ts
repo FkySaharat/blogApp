@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as marked from 'marked';
-
+import {Blog} from '../blog';
+import { BlogService } from '../blog.service';
 @Component({
   selector: 'app-page-add-blog',
   templateUrl: './page-add-blog.component.html',
@@ -9,9 +10,10 @@ import * as marked from 'marked';
 export class PageAddBlogComponent implements OnInit {
 
   compiledMarkdown: string;
-  startingValue = '';
+  startingValue = ''; 
+  blog : {"header": string,"body": string, "tag": string[]}
 
-  constructor() { 
+  constructor(private blogService:BlogService) { 
   }
 
   ngOnInit(): void {
@@ -29,15 +31,39 @@ export class PageAddBlogComponent implements OnInit {
   }
 
   onValueChanged(value:string){
-    console.log('Parent',value)
+    // console.log('Parent',value)
     this.startingValue = value;
     this.compiledMarkdown = this.compileMarkdown(value);
 
+ 
   }
 
-  onValueAddNewLine(){
- 
-    this.compiledMarkdown = this.compiledMarkdown + '<br>';
+  async saveBlog(){
+    let blogContent =this.startingValue;   
+
+    let header = blogContent.split(/\n\n/)[0];
+    let indexOfStartingBody = blogContent.search(/\n\n/);
+    let body = blogContent.slice(indexOfStartingBody,blogContent.length)
     
+    let blog: Blog = {
+      id:"",
+      header: header,
+      body:body,
+      writer:"0",
+      coWriter:[] as string[],
+      tag : [] as string[],
+      seriesId:"0"
+    }
+    this.blogService.addNewBlog(blog)
+
+    // if(blog.id == ""|| blog.id == undefined){
+    //   (await this.blogService.addNewBlog(blog)).subscribe();
+    // }
+    // else{
+    //   (await this.blogService.editBlog(blog));
+    // }
+
+
   }
 }
+

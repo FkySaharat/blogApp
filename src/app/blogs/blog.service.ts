@@ -34,17 +34,45 @@ export class BlogService {
         }
       })
     })
-
-
-
-
   }
 
+  async addNewBlog(newBlog: Blog) {
+    console.log("save blog .....")
+    await this.getConfig()
+
+    const url = `${this.configUrl.url}/blog`;
+    console.log('endtry point', url);
+    console.log('newBlog', newBlog);
+
+
+
+    return this.http.post(url, newBlog, { headers: { 'Content-Type': 'application/json' } }).pipe(
+      map((res: any) => {
+        console.log("res", res)
+        return of(null);
+      }),
+      catchError((err: any) => {
+        console.log("res", err);
+        return err;
+      })
+    )
+    .subscribe(res => console.log('res ', res) );
+  }
+
+
+  async editBlog(blog: Blog) {
+    console.log("edit blog...")
+    await this.getConfig()
+
+    const url = `${this.configUrl.url}/blog`;
+    console.log('endtry point', url);
+
+  }
 
   async getBlog(id: number | string) {
     console.log("get blog .....")
     await this.getConfig()
-    console.log(2)
+
     let blog: Blog;
     const url = `${this.configUrl.url}/blog/${id}`;
     console.log('endtry point', url);
@@ -57,7 +85,6 @@ export class BlogService {
         console.log("res", err);
         return err;
       })
-      // catchError(this.handleError)
     );
 
   }

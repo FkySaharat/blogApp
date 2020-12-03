@@ -1,7 +1,6 @@
-
-<app-markdown-blog
-[compiled] ="compiledMarkdown"
-[placeHolder]="startingValue"
-(valueChanged)="onValueChanged($event)"
-(valueEnter)="onValueAddNewLine()">
+<app-markdown-blog [compiled]="compiledMarkdown" [placeHolder]="startingValue" (valueChanged)="onValueChanged($event)">
 </app-markdown-blog>
+
+<div class="card w-25">
+    <button class="btn btn-success" (click)="saveBlog()">save</button>
+</div>

@@ -34,6 +34,8 @@ export class PageDetailBlogComponent implements OnInit {
           this.blog = res.body as Blog;
           this.status =res.status;
           console.log(this.status);
+
+          // add /n/n
         },
         error: err => { console.log(err) }
       }

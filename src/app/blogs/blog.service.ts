@@ -44,19 +44,16 @@ export class BlogService {
     console.log('endtry point', url);
     console.log('newBlog', newBlog);
 
-
-
-    return this.http.post(url, newBlog, { headers: { 'Content-Type': 'application/json' } }).pipe(
+    return await this.http.post(url, newBlog, {responseType:'text'}).pipe(
       map((res: any) => {
         console.log("res", res)
-        return of(null);
+        return of(res);
       }),
       catchError((err: any) => {
         console.log("res", err);
-        return err;
+        return of(err);
       })
-    )
-    .subscribe(res => console.log('res ', res) );
+    ).toPromise()
   }
 
 

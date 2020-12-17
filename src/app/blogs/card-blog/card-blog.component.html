@@ -1,9 +1,12 @@
+<div class='blog-card'>
 
-<div class= 'blog-card'>
-   
     <div class="blog-title">
-        <h2>{{blog.header}}</h2>
-         <div *ngFor='let tag of blog.tag' class="badge badge-primary">{{tag}}</div>
-        <p>{{blog.body}}&nbsp;&nbsp;</p>
+        <h2 class="text-dark">{{blog.header}}</h2>
+        <div class="mb-4">
+            <span *ngFor='let tag of blog.tag' class="badge badge-primary">{{tag}}</span>
+        </div>
+
+        <div class="px-2"><p class="text-dark">{{blog.body}}&nbsp;&nbsp;</p></div>
+        
     </div>
 </div>

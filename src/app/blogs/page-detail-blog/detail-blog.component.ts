@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
   templateUrl: './detail-blog.component.html',
   styleUrls: ['./detail-blog.component.css']
 })
+
 export class PageDetailBlogComponent implements OnInit {
 
   blog$: Observable<Blog>;

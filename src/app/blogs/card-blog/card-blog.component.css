@@ -17,7 +17,7 @@
 
 .blog-title{
     position: relative;
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.053);
     width: 100%;
     height: 40%;
     top: 60%;
@@ -28,10 +28,8 @@
     cursor: pointer;
 }
 
-.blog-title > p{
-    color: rgb(56, 55, 55);
+/* .blog-title > p{
     width: 380px;
     height: 38px;
-    /* margin: 8px 0; */
-    
-}
+
+} */

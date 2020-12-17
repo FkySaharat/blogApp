@@ -4,6 +4,7 @@
   float: left;
   padding: 20px;
   width: 50%;
+  height: 100vh;
 }
 
 textarea {

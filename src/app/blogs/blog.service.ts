@@ -73,6 +73,7 @@ export class BlogService {
     let blog: Blog;
     const url = `${this.configUrl.url}/blog/${id}`;
     console.log('endtry point', url);
+    //observe: response for getting full response
     return this.http.get(url, { observe: 'response', responseType: 'json' }).pipe(
       map((res: any) => {
         console.log("res", res)

@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PageLoginComponent } from './page-login/page-login.component';
+
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { Routes, RouterModule } from '@angular/router';
 
-const appRoutes: Routes=[
-  {path:'login',component:PageLoginComponent},
-  {path: '', redirectTo: '/blog-all', pathMatch: 'full'},
-  {path:'**', component:PageNotFoundComponent},
+
+
+
+const appRoutes: Routes = [
+
+  { path: '', redirectTo: '/blog/blogs-all', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
+
 ]
 
 @NgModule({
@@ -18,9 +22,9 @@ const appRoutes: Routes=[
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-     ),
+    ),
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 })

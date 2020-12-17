@@ -12,23 +12,28 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { PageLoginComponent } from './page-login/page-login.component';
-import { AppRoutingModule } from './app-routing.module';
+
 import { BlogsModule } from './blogs/blogs.module';
+import { FormsModule } from '@angular/forms';
+import { AuthModule } from './auth/auth.module';
+import { AppRoutingModule } from './app-routing.module';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    PageLoginComponent,
+   
   ],
   imports: [
     BrowserModule,
     NgbNavModule,
     HttpClientModule,
+    FormsModule,
     BlogsModule,
-    AppRoutingModule,
+    AuthModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
